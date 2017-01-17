@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         clickOneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+               // navigateToFragmentOne();
                 navigateToFragmentOne();
             }
         });
