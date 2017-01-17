@@ -40,6 +40,6 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
         ft.replace(R.id.frame_container,mFragmentTwo, fragmentNameTag);
         ft.addToBackStack(null);
         ft.commit();
-
+        // biplab git test
     }
 }
