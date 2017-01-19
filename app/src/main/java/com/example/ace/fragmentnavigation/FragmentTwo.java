@@ -10,7 +10,7 @@ import android.widget.Button;
 
 /**
  * Created by ACE on 26-10-2016.
- * Test Biplab 17/01 - GIt test
+ *
  */
 
 public class FragmentTwo extends Fragment implements View.OnClickListener{
