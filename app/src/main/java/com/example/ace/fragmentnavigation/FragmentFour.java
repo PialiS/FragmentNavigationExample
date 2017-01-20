@@ -4,14 +4,12 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * Created by ACE on 17-01-2017.
- */
 
 public class FragmentFour extends Fragment implements View.OnClickListener {
 
@@ -29,9 +27,12 @@ public class FragmentFour extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         FragmentTwo newFragmentTwo=new FragmentTwo();
         FragmentTransaction transaction=getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container,newFragmentTwo);
+        transaction.replace(R.id.frame_container,newFragmentTwo,"FragmentTwo");
         transaction.addToBackStack(null);
         transaction.commit();
+
+
+
 
     }
 }

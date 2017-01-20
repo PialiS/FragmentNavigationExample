@@ -1,5 +1,6 @@
 package com.example.ace.fragmentnavigation;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentNameTag="FragmentOne";
         if(fragmentManager.findFragmentById(R.id.frame_container)==null){
             fragmentTransaction.replace(R.id.frame_container,mfragmentOne,fragmentNameTag);
-
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
@@ -44,10 +44,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
-        } else {
+        Fragment fragmentOne = getFragmentManager().findFragmentByTag("FragmentOne");
+        Fragment fragmentTwo = getFragmentManager().findFragmentByTag("FragmentTwo");
+        Fragment fragmentThree = getFragmentManager().findFragmentByTag("FragmentThree");
+        Fragment fragmentFour = getFragmentManager().findFragmentByTag("FragmentFour");
+
+        if(fragmentOne!=null && fragmentOne.isVisible()){
+            getFragmentManager().popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        else if(fragmentTwo!=null && fragmentTwo.isVisible()){
+            getFragmentManager().beginTransaction().replace(R.id.frame_container,new FragmentOne(),"FragmentOne").addToBackStack(null).commit();
+        }
+        else if(fragmentThree!=null && fragmentThree.isVisible()){
+            getFragmentManager().beginTransaction().replace(R.id.frame_container,new FragmentTwo(),"FragmentTwo").addToBackStack(null).commit();
+        }
+        else if(fragmentFour!=null && fragmentFour.isVisible()){
+            getFragmentManager().beginTransaction().replace(R.id.frame_container,new FragmentThree(),"FragmentThree").addToBackStack(null).commit();
+        }else{
+
             Toast.makeText(MainActivity.this,"Activity page",Toast.LENGTH_LONG).show();
         }
+
+//        if (getFragmentManager().getBackStackEntryCount() > 0) {
+//            getFragmentManager().popBackStack();
+////
+//        } else {
+//
+//        }
     }
 }
